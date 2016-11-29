@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>chapter6_tutorials</name>
+  <name>pick-and-place</name>
   <version>0.0.0</version>
-  <description>The chapter6_tutorials package</description>
+  <description>The pick-and-place package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
