@@ -26,10 +26,11 @@ def gripper_handler(data):
 if __name__ == '__main__':
         talker()
         rospy.init_node('robot_move', anonymous=True)
-        rospy.Subscriber("/object", Point, object_handler)
+        rospy.Subscriber("/object_detect", Point, object_handler)
         rospy.Subscriber("/gripper", Point, gripper_handler)
         pub = rospy.Publisher('send_string', String, queue_size=10)
         rate = rospy.Rate(10) # 10hz
         while not rospy.is_shutdown():
+            if (object_position == gripper_position):
 #        pub.publish(hello_str)
-            rate.sleep()
+        rate.sleep()
