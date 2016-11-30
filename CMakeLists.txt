@@ -117,7 +117,7 @@ add_definitions(${PCL_DEFINITIONS})
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES chapter6_tutorials
+#  LIBRARIES pick_and_place
 #   CATKIN_DEPENDS pcl_conversions pcl_msgs pcl_ros sensor_msgs
 #  DEPENDS system_lib
 )
@@ -134,29 +134,29 @@ include_directories(
 )
 
 ## Declare a C++ library
-# add_library(chapter6_tutorials
-#   src/${PROJECT_NAME}/chapter6_tutorials.cpp
+# add_library(pick_and_place
+#   src/${PROJECT_NAME}/pick_and_place.cpp
 # )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-## add_dependencies(chapter6_tutorials ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+## add_dependencies(pick_and_place ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
  ##add_dependencies(pcl_filter ${PROJECT_NAME}_gencfg)
 
 ## Declare a C++ executable
-   add_executable(pcl_sample src/pcl_sample.cpp)
-   add_executable(pcl_create src/pcl_create.cpp)
-   add_executable(pcl_downsampling src/pcl_downsampling.cpp)
+#   add_executable(pcl_sample src/pcl_sample.cpp)
+#   add_executable(pcl_create src/pcl_create.cpp)
+#   add_executable(pcl_downsampling src/pcl_downsampling.cpp)
    add_executable(pcl_filter src/pcl_filter.cpp)
-   add_executable(pcl_matching src/pcl_matching.cpp)
-   add_executable(pcl_model_estimation src/pcl_model_estimation.cpp)
-   add_executable(pcl_partitioning src/pcl_partitioning.cpp)
-   add_executable(pcl_planar_segmentation src/pcl_planar_segmentation.cpp)
-   add_executable(pcl_read src/pcl_read.cpp)
-   add_executable(pcl_visualize src/pcl_visualize.cpp)
-   add_executable(pcl_visualize2 src/pcl_visualize2.cpp)
-   add_executable(pcl_write src/pcl_write.cpp)
+#   add_executable(pcl_matching src/pcl_matching.cpp)
+ #  add_executable(pcl_model_estimation src/pcl_model_estimation.cpp)
+ #  add_executable(pcl_partitioning src/pcl_partitioning.cpp)
+ #  add_executable(pcl_planar_segmentation src/pcl_planar_segmentation.cpp)
+#   add_executable(pcl_read src/pcl_read.cpp)
+ #  add_executable(pcl_visualize src/pcl_visualize.cpp)
+ #  add_executable(pcl_visualize2 src/pcl_visualize2.cpp)
+ #  add_executable(pcl_write src/pcl_write.cpp)
   add_executable(object_filter src/object_filter.cpp)
 add_executable(tf_pose src/tf_pose.cpp)
 
@@ -167,29 +167,29 @@ add_executable(tf_pose src/tf_pose.cpp)
 ##   add_dependencies(pcl_create ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-   target_link_libraries(pcl_sample ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+  # target_link_libraries(pcl_sample ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_create ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+ #  target_link_libraries(pcl_create ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_downsampling ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+  # target_link_libraries(pcl_downsampling ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
    target_link_libraries(pcl_filter ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_matching ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+  # target_link_libraries(pcl_matching ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_model_estimation ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+ #  target_link_libraries(pcl_model_estimation ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_partitioning ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+ #  target_link_libraries(pcl_partitioning ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_planar_segmentation ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+  # target_link_libraries(pcl_planar_segmentation ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_read ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+  # target_link_libraries(pcl_read ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_visualize ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+ #  target_link_libraries(pcl_visualize ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_visualize2 ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+ #  target_link_libraries(pcl_visualize2 ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_write ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+  # target_link_libraries(pcl_write ${catkin_LIBRARIES} ${PCL_LIBRARIES})
    target_link_libraries(object_filter ${catkin_LIBRARIES} ${PCL_LIBRARIES})
    target_link_libraries(tf_pose ${catkin_LIBRARIES})
 
@@ -210,7 +210,7 @@ add_executable(tf_pose src/tf_pose.cpp)
 # )
 
 ## Mark executables and/or libraries for installation
-# install(TARGETS chapter6_tutorials chapter6_tutorials_node
+# install(TARGETS pick_and_place pick_and_place_node
 #   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -235,7 +235,7 @@ add_executable(tf_pose src/tf_pose.cpp)
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_chapter6_tutorials.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_pick_and_place.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
