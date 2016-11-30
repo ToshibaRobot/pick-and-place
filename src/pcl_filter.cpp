@@ -16,14 +16,14 @@
 #include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/segmentation/extract_clusters.h>
 #include <dynamic_reconfigure/server.h>
-#include <chapter6_tutorials/pcd_dataConfig.h>
+#include <pick_and_place/pcd_dataConfig.h>
 #include <pcl/filters/passthrough.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/visualization/cloud_viewer.h>
 #include <pcl/segmentation/region_growing.h>
 #include <pcl/common/transforms.h>
 
-double_t leafsize=0.01f,filter_mean,filter_thresold,segmentation_thresold,ClusterTolerance;
+double_t leafsize_x=0.01f,leafsize_y=0.01f,leafsize_z=0.01f,filter_mean,filter_thresold,segmentation_thresold,ClusterTolerance;
 int32_t segmentation_maxiteration,ClusterMinSize,ClusterMaxSize;
 double_t passFilterMin_x,passFilterMin_y,passFilterMin_z,passFilterMax_x,passFilterMax_y,passFilterMax_z;
 
@@ -56,7 +56,7 @@ public:
     // Create the filtering object: downsample the dataset using a leaf size of 1cm
     pcl::VoxelGrid<pcl::PointXYZRGB> voxelSampler;
     voxelSampler.setInputCloud(cloud->makeShared());
-    voxelSampler.setLeafSize(leafsize,leafsize,leafsize);
+    voxelSampler.setLeafSize(leafsize_x,leafsize_y,leafsize_z);
     voxelSampler.filter(*cloud_downsampled);
 
     pcl::toROSMsg(*cloud_downsampled, output);
@@ -238,7 +238,7 @@ public:
 
 
     //output.header.frame_id = "odom";
-    //pcl::io::savePCDFileASCII ("/home/ros/catkin_ws/src/chapter6_tutorials/data/data_pcd.pcd", cloud);
+    //pcl::io::savePCDFileASCII ("/home/ros/catkin_ws/src/pick_and_place/data/data_pcd.pcd", cloud);
   }
 
   void object_dim_calc(pcl::PointCloud<pcl::PointXYZRGB>::Ptr  clustered_cloud,int cluster_count)
@@ -330,10 +330,12 @@ protected:
   ros::Publisher pcl_pub3;
 };
 
-void callback(chapter6_tutorials::pcd_dataConfig &config, uint32_t level)
+void callback(pick_and_place::pcd_dataConfig &config, uint32_t level)
 {
 
-  leafsize = config.leafsize;
+  leafsize_x = config.leafsize_x;
+  leafsize_y = config.leafsize_y;
+  leafsize_z = config.leafsize_z;
   filter_mean = config.filter_mean;
   filter_thresold = config.filter_thresold;
   segmentation_thresold = config.segmentation_thresold;
@@ -356,8 +358,8 @@ main(int argc, char** argv)
 {
   ros::init(argc, argv, "pcl_filter");
 
-  dynamic_reconfigure::Server<chapter6_tutorials::pcd_dataConfig> server;
-  dynamic_reconfigure::Server<chapter6_tutorials::pcd_dataConfig>::CallbackType f;
+  dynamic_reconfigure::Server<pick_and_place::pcd_dataConfig> server;
+  dynamic_reconfigure::Server<pick_and_place::pcd_dataConfig>::CallbackType f;
   f = boost::bind(&callback, _1, _2);
   server.setCallback(f);
   cloudHandler handler;
