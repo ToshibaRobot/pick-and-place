@@ -19,7 +19,7 @@ main(int argc, char **argv)
 
   pcl::PointCloud<pcl::PointXYZRGB> cloud;
 
-  pcl::io::loadPCDFile ("/home/ros/catkin_ws/src/chapter6_tutorials/data/dataRGB_pcd.pcd", cloud); // Load the clouds from the disk
+  pcl::io::loadPCDFile ("/home/akpndt/catkin_ws/src/pick_and_place/data/dataRGB_pcd.pcd", cloud); // Load the clouds from the disk
 
   pcl::toROSMsg(cloud, output);
   output.header.frame_id = "odom";

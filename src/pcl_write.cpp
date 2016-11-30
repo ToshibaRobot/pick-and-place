@@ -8,7 +8,7 @@ void cloudCB(const sensor_msgs::PointCloud2 &input)
 {
     pcl::PointCloud<pcl::PointXYZRGBNormal> cloud;
     pcl::fromROSMsg(input, cloud);
-    pcl::io::savePCDFileASCII ("/home/ros/catkin_ws/src/chapter6_tutorials/data/dataRGB_pcd.pcd", cloud);
+    pcl::io::savePCDFileASCII ("/home/akpndt/catkin_ws/src/pick_and_place/data/dataRGB_pcd.pcd", cloud);
 }
 
 main (int argc, char **argv)

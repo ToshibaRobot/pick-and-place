@@ -16,7 +16,7 @@
 #include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/segmentation/extract_clusters.h>
 #include <dynamic_reconfigure/server.h>
-#include <chapter6_tutorials/pcd_dataConfig.h>
+#include <pick_and_place/pcd_dataConfig.h>
 #include <pcl/filters/passthrough.h>
 
 double_t leafsize_x=0.01f,leafsize_y=0.01f,leafsize_z=0.01f,filter_mean,filter_thresold,segmentation_thresold,ClusterTolerance;
@@ -28,7 +28,8 @@ class cloudHandler
 public:
     cloudHandler()
     {
-        pcl_sub = nh.subscribe("/camera/depth/points", 10, &cloudHandler::cloudCB, this);
+        //pcl_sub = nh.subscribe("/camera/depth/points", 10, &cloudHandler::cloudCB, this);
+        pcl_sub = nh.subscribe("pcl_output", 10, &cloudHandler::cloudCB, this);
         pcl_pub = nh.advertise<sensor_msgs::PointCloud2>("pcl_filtered", 1);
         pcl_pub1 = nh.advertise<sensor_msgs::PointCloud2>("pcl_filtered1", 1);
         pcl_pub2 = nh.advertise<sensor_msgs::PointCloud2>("pcl_filtered2", 1);
@@ -166,7 +167,7 @@ public:
 
 
         //output.header.frame_id = "odom";
-        //pcl::io::savePCDFileASCII ("/home/ros/catkin_ws/src/chapter6_tutorials/data/data_pcd.pcd", cloud);
+        //pcl::io::savePCDFileASCII ("/home/ros/catkin_ws/src/pick_and_place/data/data_pcd.pcd", cloud);
     }
 
 protected:
@@ -178,7 +179,7 @@ protected:
     ros::Publisher pcl_pub3;
 };
 
-void callback(chapter6_tutorials::pcd_dataConfig &config, uint32_t level)
+void callback(pick_and_place::pcd_dataConfig &config, uint32_t level)
 {
 
   leafsize_x = config.leafsize_x;
@@ -206,8 +207,8 @@ main(int argc, char** argv)
 {
     ros::init(argc, argv, "pcl_filter");
 
-    dynamic_reconfigure::Server<chapter6_tutorials::pcd_dataConfig> server;
-    dynamic_reconfigure::Server<chapter6_tutorials::pcd_dataConfig>::CallbackType f;
+    dynamic_reconfigure::Server<pick_and_place::pcd_dataConfig> server;
+    dynamic_reconfigure::Server<pick_and_place::pcd_dataConfig>::CallbackType f;
     f = boost::bind(&callback, _1, _2);
     server.setCallback(f);
     cloudHandler handler;

@@ -16,7 +16,7 @@
 #include <pcl/segmentation/sac_segmentation.h>
 #include <pcl/segmentation/extract_clusters.h>
 #include <dynamic_reconfigure/server.h>
-#include <chapter6_tutorials/pcd_dataConfig.h>
+#include <pick_and_place/pcd_dataConfig.h>
 #include <pcl/filters/passthrough.h>
 #include <iostream>
 #include<vector>
@@ -196,7 +196,7 @@ public:
       output.header.frame_id = "odom";
 
         //output.header.frame_id = "odom";
-        //pcl::io::savePCDFileASCII ("/home/ros/catkin_ws/src/chapter6_tutorials/data/data_pcd.pcd", cloud);
+        //pcl::io::savePCDFileASCII ("/home/akpndt/catkin_ws/src/pick_and_place/data/data_pcd.pcd", cloud);
     }
 
 protected:
@@ -209,7 +209,7 @@ protected:
     ros::Publisher pcl_pub4;
 };
 
-void callback(chapter6_tutorials::pcd_dataConfig &config, uint32_t level)
+void callback(pick_and_place::pcd_dataConfig &config, uint32_t level)
 {
 
   leafsize_x = config.leafsize_x;
@@ -237,8 +237,8 @@ main(int argc, char** argv)
 {
     ros::init(argc, argv, "object_filter");
 
-    dynamic_reconfigure::Server<chapter6_tutorials::pcd_dataConfig> server;
-    dynamic_reconfigure::Server<chapter6_tutorials::pcd_dataConfig>::CallbackType f;
+    dynamic_reconfigure::Server<pick_and_place::pcd_dataConfig> server;
+    dynamic_reconfigure::Server<pick_and_place::pcd_dataConfig>::CallbackType f;
     f = boost::bind(&callback, _1, _2);
     server.setCallback(f);
     cloudHandler handler;

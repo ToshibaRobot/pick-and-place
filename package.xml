@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package>
-  <name>pick-and-place</name>
+  <name>pick_and_place</name>
   <version>0.0.0</version>
-  <description>The pick-and-place package</description>
+  <description>The pick_and_place package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->

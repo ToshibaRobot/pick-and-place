@@ -29,7 +29,7 @@ public:
 
 
         pcl::toROSMsg(cloud_downsampled, output);
-        //pcl::io::savePCDFileASCII ("/home/ros/catkin_ws/src/chapter6_tutorials/data/data_pcd.pcd", cloud_downsampled);
+        //pcl::io::savePCDFileASCII ("/home/akpndt/catkin_ws/src/pick_and_place/data/data_pcd.pcd", cloud_downsampled);
         pcl_pub.publish(output);
 
     }
