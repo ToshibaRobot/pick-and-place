@@ -218,8 +218,8 @@ public:
 
       std::cout << "PointCloud representing the Cluster: " << cloud_cluster->points.size () << " data points." << std::endl;
       std::stringstream ss;
-      ss << "cloud_cluster_" << j << ".pcd";
-      writer.write<pcl::PointXYZRGB> (ss.str (), *cloud_cluster, false); //*
+    //  ss << "cloud_cluster_" << j << ".pcd";
+    //  writer.write<pcl::PointXYZRGB> (ss.str (), *cloud_cluster, false); //*
 
       Eigen::Vector4f centroid;
       pcl::compute3DCentroid(*cloud_cluster,centroid);
