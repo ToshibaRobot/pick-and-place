@@ -158,6 +158,8 @@ include_directories(
    add_executable(pcl_visualize2 src/pcl_visualize2.cpp)
    add_executable(pcl_write src/pcl_write.cpp)
   add_executable(object_filter src/object_filter.cpp)
+add_executable(tf_pose src/tf_pose.cpp)
+
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -189,7 +191,7 @@ include_directories(
 
    target_link_libraries(pcl_write ${catkin_LIBRARIES} ${PCL_LIBRARIES})
    target_link_libraries(object_filter ${catkin_LIBRARIES} ${PCL_LIBRARIES})
-
+   target_link_libraries(tf_pose ${catkin_LIBRARIES})
 
    add_dependencies(pcl_filter ${PROJECT_NAME}_gencfg)
 
