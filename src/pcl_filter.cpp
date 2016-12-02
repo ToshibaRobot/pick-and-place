@@ -56,7 +56,7 @@ public:
     // Create the filtering object: downsample the dataset using a leaf size of 1cm
     pcl::VoxelGrid<pcl::PointXYZRGB> voxelSampler;
     voxelSampler.setInputCloud(cloud->makeShared());
-    voxelSampler.setLeafSize(leafsize_x,leafsize_y,leafsize_z);
+    voxelSampler.setLeafSize(leafsize_x,leafsize_x,leafsize_x);
     voxelSampler.filter(*cloud_downsampled);
 
     pcl::toROSMsg(*cloud_downsampled, output);

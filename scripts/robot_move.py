@@ -11,6 +11,7 @@ from std_msgs.msg import Float32
 from std_msgs.msg import Bool
 object_position = 0.0
 gripper_position= 0.0
+suction = False
 
 def talker():
     pub = rospy.Publisher('send_string', String, queue_size=10)
@@ -20,17 +21,19 @@ def object_handler(data):
     object_position = data.data
 
 def gripper_handler(data):
-    global gripper_position
-    gripper_position =data.data
+    global marker_position
+    marker_position =data.data
 
 if __name__ == '__main__':
         talker()
         rospy.init_node('robot_move', anonymous=True)
         rospy.Subscriber("/object_detect", Point, object_handler)
-        rospy.Subscriber("/gripper", Point, gripper_handler)
+        rospy.Subscriber("/marker", Point, marker_handler)
         pub = rospy.Publisher('send_string', String, queue_size=10)
         rate = rospy.Rate(10) # 10hz
         while not rospy.is_shutdown():
             if (object_position == gripper_position):
+                suction = True
+
 #        pub.publish(hello_str)
         rate.sleep()
