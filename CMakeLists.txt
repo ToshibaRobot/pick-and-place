@@ -13,6 +13,7 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   dynamic_reconfigure
+  tf
 )
 
 
@@ -60,11 +61,11 @@ add_definitions(${PCL_DEFINITIONS})
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
+ add_message_files(
+   FILES
+   object_coordinate.msg
 #   Message2.msg
-# )
+ )
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -81,10 +82,10 @@ add_definitions(${PCL_DEFINITIONS})
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   pcl_msgs#   sensor_msgs
-# )
+ generate_messages(
+   DEPENDENCIES
+   std_msgs
+ )
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -159,6 +160,9 @@ include_directories(
  #  add_executable(pcl_write src/pcl_write.cpp)
   add_executable(object_filter src/object_filter.cpp)
 add_executable(tf_pose src/tf_pose.cpp)
+add_executable(add_end_effactor_frame src/add_end_effactor_frame.cpp)
+add_executable(add_robot_home_coordinate src/add_robot_home_coordinate.cpp)
+
 
 
 ## Add cmake target dependencies of the executable
@@ -192,6 +196,8 @@ add_executable(tf_pose src/tf_pose.cpp)
   # target_link_libraries(pcl_write ${catkin_LIBRARIES} ${PCL_LIBRARIES})
    target_link_libraries(object_filter ${catkin_LIBRARIES} ${PCL_LIBRARIES})
    target_link_libraries(tf_pose ${catkin_LIBRARIES})
+   target_link_libraries(add_end_effactor_frame ${catkin_LIBRARIES})
+   target_link_libraries(add_robot_home_coordinate ${catkin_LIBRARIES})
 
    add_dependencies(pcl_filter ${PROJECT_NAME}_gencfg)
 

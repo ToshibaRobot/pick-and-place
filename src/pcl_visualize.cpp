@@ -1,3 +1,10 @@
+/**********************************************************************************************************************************
+
+  Description:This program is used for displaying the final object in the pcl visualizer .
+  Auther     :Hirenbhai Patel & Avinash Jain
+
+ **********************************************************************************************************************************/
+
 #include <iostream>
 #include <ros/ros.h>
 #include <pcl/visualization/cloud_viewer.h>
@@ -10,10 +17,11 @@ public:
     cloudHandler()
     : viewer("Cloud Viewer")
     {
-        pcl_sub = nh.subscribe("pcl_filtered3", 10, &cloudHandler::cloudCB, this);
-        viewer_timer = nh.createTimer(ros::Duration(0.1), &cloudHandler::timerCB, this);
+        pcl_sub = nh.subscribe("pcl_filtered3", 10, &cloudHandler::cloudCB, this); // subscribe the topic "pcl_filtered3"
+        viewer_timer = nh.createTimer(ros::Duration(0.1), &cloudHandler::timerCB, this); // create a timer for viewer
     }
 
+    //this function will tack the data from ros message data type to this node and display the cloud data in to a viewer
     void cloudCB(const sensor_msgs::PointCloud2 &input)
     {
         pcl::PointCloud<pcl::PointXYZRGB> cloud;
@@ -22,6 +30,7 @@ public:
         viewer.showCloud(cloud.makeShared());
     }
 
+    //timer for updating the data in to the viewer
     void timerCB(const ros::TimerEvent&)
     {
         if (viewer.wasStopped())
@@ -39,9 +48,9 @@ protected:
 
 main (int argc, char **argv)
 {
-    ros::init (argc, argv, "pcl_visualize");
+    ros::init (argc, argv, "pcl_visualize"); // create a node "pcl_visualize"
 
-    cloudHandler handler;
+    cloudHandler handler; // create a object of a class
 
     ros::spin();
 
