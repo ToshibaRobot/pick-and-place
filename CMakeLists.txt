@@ -156,9 +156,8 @@ include_directories(
  #  add_executable(pcl_planar_segmentation src/pcl_planar_segmentation.cpp)
 #   add_executable(pcl_read src/pcl_read.cpp)
    add_executable(pcl_visualize src/pcl_visualize.cpp)
-   add_executable(pcl_visualize2 src/pcl_visualize2.cpp)
+
  #  add_executable(pcl_write src/pcl_write.cpp)
-  add_executable(object_filter src/object_filter.cpp)
 add_executable(tf_pose src/tf_pose.cpp)
 add_executable(add_end_effactor_frame src/add_end_effactor_frame.cpp)
 add_executable(add_robot_home_coordinate src/add_robot_home_coordinate.cpp)
@@ -191,10 +190,9 @@ add_executable(add_robot_home_coordinate src/add_robot_home_coordinate.cpp)
 
    target_link_libraries(pcl_visualize ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
-   target_link_libraries(pcl_visualize2 ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
   # target_link_libraries(pcl_write ${catkin_LIBRARIES} ${PCL_LIBRARIES})
-   target_link_libraries(object_filter ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+
    target_link_libraries(tf_pose ${catkin_LIBRARIES})
    target_link_libraries(add_end_effactor_frame ${catkin_LIBRARIES})
    target_link_libraries(add_robot_home_coordinate ${catkin_LIBRARIES})
